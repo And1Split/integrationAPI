@@ -37,7 +37,7 @@ function readyFn() {
                 class: 'arrow_container'
             }).html("&gt;"));
         $('#carousel_inside_wrapper').append(
-            $('<div>', {
+            $('<ul>', {
                 id: 'carousel'
             }));
         return 1;
@@ -46,7 +46,7 @@ function readyFn() {
     function addImage(imageObj) {
         "use strict";
         $(imageContainer).append(
-            $('<div>', {
+            $('<li>', {
                 class: 'image_bloc'
             }).append(
                 $('<span>', {
@@ -73,6 +73,24 @@ function readyFn() {
                 success: function(media) {
                     if (media.data._embedded.length > 0) {
                         if (intitCarousel()) {
+                            $("#right_arrow_container").click(function() {
+                                $("#carousel").animate({
+                                    left: "-=158"
+                                }, 400, function() {
+                                    $("#carousel").append($("#carousel li").first());
+                                    $("#carousel").css("left", "+=158");
+                                    $("#carousel").clearQueue();
+                                });
+                            });
+                            $("#left_arrow_container").click(function() {
+                                $("#carousel").animate({
+                                    left: "+=158"
+                                }, 400, function() {
+                                    $("#carousel").prepend($("#carousel li").last());
+                                    $("#carousel").css("left", "-=158");
+                                    $("#carousel").clearQueue();
+                                });
+                            });
                             console.log('In');
                             $.each(media.data._embedded, function(index, obj) {
                                 addImage(obj.images.thumbnail);
