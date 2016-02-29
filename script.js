@@ -76,7 +76,7 @@ function readyFn() {
                             $("#right_arrow_container").click(function() {
                                 $("#carousel").animate({
                                     left: "-=158"
-                                }, 400, function() {
+                                }, 300, function() {
                                     $("#carousel").append($("#carousel li").first());
                                     $("#carousel").css("left", "+=158");
                                     $("#carousel").clearQueue();
@@ -85,7 +85,7 @@ function readyFn() {
                             $("#left_arrow_container").click(function() {
                                 $("#carousel").animate({
                                     left: "+=158"
-                                }, 400, function() {
+                                }, 300, function() {
                                     $("#carousel").prepend($("#carousel li").last());
                                     $("#carousel").css("left", "-=158");
                                     $("#carousel").clearQueue();

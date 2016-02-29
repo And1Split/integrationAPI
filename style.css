@@ -53,18 +53,19 @@ table {
     height: 170px;
     /*background-color: #f1e9da;*/
     background: rgba(241,233,218,1);
-background: -moz-linear-gradient(left, rgba(241,233,218,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(241,233,218,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(241,233,218,1)), color-stop(35%, rgba(255,255,255,1)), color-stop(65%, rgba(255,255,255,1)), color-stop(100%, rgba(241,233,218,1)));
-background: -webkit-linear-gradient(left, rgba(241,233,218,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(241,233,218,1) 100%);
-background: -o-linear-gradient(left, rgba(241,233,218,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(241,233,218,1) 100%);
-background: -ms-linear-gradient(left, rgba(241,233,218,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(241,233,218,1) 100%);
-background: linear-gradient(to right, rgba(241,233,218,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(241,233,218,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e9da', endColorstr='#f1e9da', GradientType=1 );
-    margin: 10px auto;
+background: rgba(214,214,214,1);
+background: -moz-linear-gradient(left, rgba(214,214,214,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(214,214,214,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(214,214,214,1)), color-stop(35%, rgba(255,255,255,1)), color-stop(65%, rgba(255,255,255,1)), color-stop(100%, rgba(214,214,214,1)));
+background: -webkit-linear-gradient(left, rgba(214,214,214,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(214,214,214,1) 100%);
+background: -o-linear-gradient(left, rgba(214,214,214,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(214,214,214,1) 100%);
+background: -ms-linear-gradient(left, rgba(214,214,214,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(214,214,214,1) 100%);
+background: linear-gradient(to right, rgba(214,214,214,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 65%, rgba(214,214,214,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', endColorstr='#d6d6d6', GradientType=1 );
+margin: 10px auto;
     position: relative;
     /*border: 1px solid #80b3b3;*/
-    border-left: 1px solid #f1e9da;
-    border-right: 1px solid #f1e9da;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
 }
 
 #carousel_inside_wrapper{
@@ -115,21 +116,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e9da', end
 
 /* Arrows */
 .arrow_container{
-    width: 25px;
-    color: #e1d3b7;
+    width: 35px;
+    color: #404040;
     background-color: #ffffff;
-    height: 30px;
-    top: 70px;
+    height: 40px;
+    top: 65px;
     position: absolute;
     z-index: 10;
-    border: 1px solid #e1d3b7;
-    font-size: 28px;
+    font-weight: bold;
+    font-size: 37px;
     text-align: center;
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
     cursor: pointer;
-    transition: width 0.2s ease, height 0.2s ease, font-size 0.2s ease, top 0.2s ease;
+    transition: width 0.2s ease, height 0.2s ease, font-size 0.2s ease, top 0.2s ease, right 0.2s ease, left 0.2s ease, color 0.2s ease;
     /* To avoid selection */
     -webkit-user-select: none;   /* Chrome/Safari/Opera */
     -khtml-user-select: none;    /* Konqueror */
@@ -140,19 +141,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e9da', end
 }
 
 .arrow_container:hover {
-    height: 40px;
-    top: 65px;
-    width: 30px;
-    font-size: 38px;
+    height: 50px;
+    top: 60px;
+    width: 40px;
+    font-size: 46px;
+    color: #00bfff;
 }
 
 #left_arrow_container{
-    left: -8px;
+    left: -20px;
     /*border-left: none;*/
-    
 }
+
+#left_arrow_container:hover{
+    left: -25px;
+}
+
 #right_arrow_container{
-    right: -8px;
+    right: -20px;
     /*border-right: none;*/
+}
+
+#right_arrow_container:hover{
+    right: -25px;
 }
 
