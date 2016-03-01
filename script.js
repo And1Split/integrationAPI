@@ -17,7 +17,7 @@ function readyFn() {
     //----- FUNCTIONS ------
     // Initiate the carsouel element
     function intitCarousel() {
-        "use strict";
+        "use strict"; //Needed in order to declare new DOM element using the below method
         $('#carousel_container').append(
             $('<div>', {
                 id: 'carousel_outside_wrapper'
@@ -40,6 +40,24 @@ function readyFn() {
             $('<ul>', {
                 id: 'carousel'
             }));
+        $("#right_arrow_container").click(function() {
+            $("#carousel").animate({
+                left: "-=158"
+            }, 300, function() {
+                $("#carousel").append($("#carousel li").first());
+                $("#carousel").css("left", "+=158");
+                $("#carousel").clearQueue();
+            });
+        });
+        $("#left_arrow_container").click(function() {
+            $("#carousel").animate({
+                left: "+=158"
+            }, 300, function() {
+                $("#carousel").prepend($("#carousel li").last());
+                $("#carousel").css("left", "-=158");
+                $("#carousel").clearQueue();
+            });
+        });
         return 1; //Used to check if the creation was successful.
     }
 
@@ -61,24 +79,17 @@ function readyFn() {
         )
     }
 
-    //Inserting the image 'original' in the popin
-    //Receive the 'original' image URL as a parameter
-    function originalImageEl(imgURL) {
-        var el;
-        el = $('<div>', {
-            id: 'popin_container'
-        }).append($('<img>', {
-            src: imgURL,
-            id: 'popin_image'
-        }))
-        return el;
-    }
-
     //Creating the modal box
     function popInImage(img) {
         var block_page = $('<div id="block_page"></div>'); // Create the blocker
         block_page.appendTo('body');
-        block_page.append(originalImageEl(img));
+        //Adding the 'original' size image element
+        block_page.append($('<div>', {
+            id: 'popin_container'
+        }).append($('<img>', {
+            src: img,
+            id: 'popin_image'
+        })));
         //Adding the close button + related animations
         $('#popin_container').append($('<div id="close_window">X</div>').click(function() {
             $('#popin_container').animate({
@@ -106,13 +117,12 @@ function readyFn() {
                 // Animation complete.
             });
         });
-        console.log(img);
     }
 
     // Retrieve the media base URL in order to retrieve content.
     $.ajax({
         type: 'GET', // define type of HTTP request
-        url: baseURL + requestParams, // define request URL from above
+        url: baseURL + requestParams, // define request to make the authentication call
         dataType: 'json', // define data type that we're going to be receiving
         success: function(data) {
             mediaBaseURL = 'https:' + data.data._embedded.customer._embedded['media:recent']._links.self.href;
@@ -123,24 +133,7 @@ function readyFn() {
                 success: function(media) {
                     if (media.data._embedded.length > 0) {
                         if (intitCarousel()) { // If the carousel has initiated, adding the images and the carousel logic 
-                            $("#right_arrow_container").click(function() {
-                                $("#carousel").animate({
-                                    left: "-=158"
-                                }, 300, function() {
-                                    $("#carousel").append($("#carousel li").first());
-                                    $("#carousel").css("left", "+=158");
-                                    $("#carousel").clearQueue();
-                                });
-                            });
-                            $("#left_arrow_container").click(function() {
-                                $("#carousel").animate({
-                                    left: "+=158"
-                                }, 300, function() {
-                                    $("#carousel").prepend($("#carousel li").last());
-                                    $("#carousel").css("left", "-=158");
-                                    $("#carousel").clearQueue();
-                                });
-                            });
+
                             //Running through all the images in the JSON objesct and adding them to the carousel
                             $.each(media.data._embedded, function(index, obj) {
                                 addImage(obj.images.thumbnail, obj.images.original);
